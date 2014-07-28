@@ -1,0 +1,11 @@
+<h1>List of Universities</h1>
+<ul>
+	<% _.each(list, function(university) { %>
+	<li>
+		<a href="#/universities/<%= university.get('id') %>">
+		<%= university.get('average_gpa_weighted') %> -
+		<%= university.get('university_name') %>
+		</a>
+	</li>
+	<% }); %>
+</ul>

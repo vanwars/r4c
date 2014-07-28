@@ -1,0 +1,82 @@
+#content {
+	margin-bottom: 70px;
+}
+.starter-template {
+	padding: 40px 15px;
+}
+.container {
+	max-width: 900px;
+}
+.lead {
+	font-weight: bold;
+}
+.fa-bars {
+	color: #fff;
+	font-size: 20px;
+}
+.container ul {
+	list-style: none;
+	background: #fff;
+	padding: 5px 0;
+}
+ 
+.container li {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+}
+.container li a {
+	text-decoration: none;
+}
+ 
+.container li:last-child a {
+	border-bottom: none;
+}
+ 
+.container li:hover,
+.container li:focus {
+	color: #1c1c1c;
+	background: #EEE;
+}
+
+.college-image {
+	width: 500px;
+}
+
+.university-logo {
+	width: 200px;
+	margin-top: 20px;
+}
+
+.loading {
+	font-size: 100px;
+	display: block;
+	/*margin-left: auto;
+	margin-right: auto;*/
+	margin-left: 30px;
+	margin-top: 50px;
+	width: 100px;
+	color: #CCC;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 70px;
+  margin-top: 60px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
