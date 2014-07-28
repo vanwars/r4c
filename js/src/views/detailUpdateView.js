@@ -3,8 +3,14 @@ var app = app || {};
 var DetailUpdateView = DetailView.extend({
     events: {
         "change"        : "change",
-        "click .save"   : "beforeSave",
-        "click .delete" : "deleteModel"
+        "click .save"   : "beforeSave"
+    },
+
+    render: function () {
+        if (this.model)
+			this.$el.html(this.template(this.model.toJSON()));
+		else
+			this.$el.html("You are not logged in");
     },
 
     change: function (event) {
@@ -41,23 +47,12 @@ var DetailUpdateView = DetailView.extend({
 		var self = this;
         this.model.save(null, {
             success: function (model) {
-                self.render();
                 app.utils.showAlert('Success!', 'User information successfully saved', 'alert-success');
             },
             error: function () {
                 app.utils.showAlert('Error', 'An error occurred while trying to update this item', 'alert-error');
             }
         });
-    },
-
-    deleteModel: function () {
-        this.model.destroy({
-            success: function () {
-                alert('Wine deleted successfully');
-                window.history.back();
-            }
-        });
-        return false;
     }
 
 });

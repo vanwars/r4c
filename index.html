@@ -13,6 +13,8 @@
 		<title>Ready4College</title>
     </head>
     <body>
+		
+		
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle"
@@ -24,21 +26,15 @@
                 </button>
                 <a class="navbar-brand" href="#"><strong>Ready4College</strong></a>
             </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/welcome">Welcome</a></li>
-                    <li><a href="#/profile">Profile</a></li>
-                    <li><a href="#">Main Menu</a></li>
-                    <li><a href="#/universities">Universities</a></li>
-                    <li><a href="#/register">Register</a></li>
-                    
-                </ul>
-            </div>
+			
+			<!-- Header View Here -->
+            <div id="menu" class="collapse navbar-collapse"></div>
         </div>
-        <div id="content" class="container">	
-                
-			<!-- Views go in here -->
-        </div>
+		
+		<!-- Content View Here -->
+        <div id="content" class="container"></div>
+		
+		
 		<div class="footer">
 			<div class="container">
 				<p class="text-muted">Place sticky footer content here.</p>
@@ -53,9 +49,11 @@
 		<script src="js/src/models/model.js"></script>
 		<script src="js/src/collections/collection.js"></script>
 		<script src="js/src/views/baseView.js"></script>
+		<script src="js/src/views/loginView.js"></script>
 		<script src="js/src/views/detailView.js"></script>
 		<script src="js/src/views/detailUpdateView.js"></script>
 		<script src="js/src/views/listView.js"></script>
+		<script src="js/src/views/headerView.js"></script>
 		<script src="js/src/views/staticView.js"></script>
 		<script src="js/src/utils.js"></script>
 		

@@ -5,11 +5,16 @@ var config = {
 		'SplashPage',
 		'Register',
 		'MainMenu',
-		'Profile'
+		'Profile',
+		'Login',
+		'MenuLoggedIn',
+		'MenuAnonymous'	
 	],
 	templates: {},
 	username: 'vanwars',
-	password: 'my_password'
+	password: 'my_password',
+	user: null,
+	headerView: null
 };
 
 var AppRouter = Backbone.Router.extend({
@@ -18,6 +23,8 @@ var AppRouter = Backbone.Router.extend({
 		"welcome": "welcome",
 		"register": "register",
 		"profile": "profile",
+		"login": "login",
+		"logout": "logout",
 		"universities": "universityList",
 		"universities/:id": "universityDetail"
 	},
@@ -34,37 +41,48 @@ var AppRouter = Backbone.Router.extend({
 		});
 	},
 	universityList: function(){
-		var universities = new Universities();
 		new ListView({
 			el: '#content',
-			collection: universities,
+			collection: new Universities(),
 			templateName: 'UniversityList'
 		});
 	},
 	universityDetail: function (id) {
 		new DetailView({
 			el: '#content',
-			Type: University,
-			id: id,
+			model: new University({ id: id }),
 			templateName: 'UniversityDetail'
 		});
 	},
 	profile: function () {
 		new DetailUpdateView({
 			el: '#content',
-			Type: User,
-			id: 1,
+			model: config.user,
 			templateName: 'Profile'	
 		});	
 	},
 	register: function(){
 		new DetailUpdateView({
 			el: '#content',
-			Type: User,
+			model: new User(),
 			templateName: 'Register'	
 		});
+	},
+	login: function(){
+		new LoginView({
+			el: '#content',
+			collection: new Users(),
+			templateName: 'Login'	
+		});
+	},
+	logout: function(){
+		config.user = null;
+		config.headerView.render();
+		app_router.navigate("/login", true);
 	}
 });
+
+app_router = new AppRouter();
 
 
 $(function() {
@@ -88,9 +106,16 @@ $(function() {
 	
 	//3. Start the router:
 	app.utils.loadTemplate(config.templateNames, function() {
-		app_router = new AppRouter();
+		config.headerView = new HeaderView({
+			el: '#menu',
+			loggedInTemplateName: 'MenuLoggedIn',
+			anonymousTemplateName: 'MenuAnonymous'	
+		});
 		Backbone.history.start();
 	});
+	
+	
+	
 		
 });
 
