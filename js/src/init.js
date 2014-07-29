@@ -1,5 +1,10 @@
 var app_router;
 $( document ).ready(function() {
+	// create an AppRouter class based on the config file that
+	// user made:
+	var AppRouter = Backbone.Router.extend({
+		routes: config.urls
+	});
 	app_router = new AppRouter();
 
 	//1. Append crossDomain = true option:
