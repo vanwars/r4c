@@ -36,7 +36,7 @@ var LoginView = BaseView.extend({
 						anonymousTemplateName: 'AnonymousMenu',
 						user: config.user
 					});
-					app_router.navigate("/", true);
+					config.router.navigate("/", true);
 				}
 				else {
 					app.utils.showAlert(

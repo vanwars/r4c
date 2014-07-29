@@ -1,5 +1,6 @@
 var BaseView = Backbone.View.extend({
 	templateName: null,
+	extras: {},
 	initialize: function(opts) {
 		$.extend(this, opts);
 		this.template = _.template(config.templates[this.templateName]);

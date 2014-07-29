@@ -24,7 +24,10 @@ var DetailView = BaseView.extend({
 	},
 
     render: function () {
-        this.$el.html(this.template(this.model.toJSON()));
+		var context = {};
+		$.extend(context, this.model.toJSON());
+		$.extend(context, this.extras);
+        this.$el.html(this.template(context));
         return this;
     }
 	

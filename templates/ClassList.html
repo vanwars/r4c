@@ -1,4 +1,6 @@
-<h1>Courses Taken</h1>
+<h1>Courses Taken for <%= user.get("first_name") %></h1>
+
+GPA: <%= gpa %>
 <div class="list-group">
 	<% _.each(list, function(course) { %>
 	<a class="list-group-item" href="#/classes/<%= course.get('id') %>">

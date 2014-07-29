@@ -28,7 +28,9 @@ var config = {
 		"classes/:id": classDetail
 	},
 	user: null,
+	universities: null,
 	headerView: null,
 	footerView: null,
+	router: null,
 	loginURL: "login"
 };

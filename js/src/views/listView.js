@@ -7,18 +7,26 @@ var ListView = BaseView.extend({
 		var that = this;
 		this.template = _.template(config.templates[this.templateName]);
 		this.showLoadingMessage();
-		this.collection.fetch({
-			data: {
-				query: this.filter	
-			},
-			success: function(){
-				that.render();
-			}
-		});
+		if (this.collection.length==0) {
+			this.collection.fetch({
+				data: {
+					query: this.filter	
+				},
+				success: function(){
+					that.render();
+				}
+			});
+		}
+		else {
+			this.render();
+		}
+		
 	},
 	
     render: function() {
-		this.$el.html(this.template({ list: this.collection.models }));
+		var context = { list: this.collection.models };
+		$.extend(context, this.extras);
+        this.$el.html(this.template(context));
     }
 
 });

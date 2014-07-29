@@ -13,21 +13,32 @@ function mainMenu(){
 }
 
 function universityList(){
+	if (config.universities == null)
+		config.universities = new Universities();
+	
 	new ListView({
 		el: '#content',
-		collection: new Universities(),
+		collection: config.universities,
 		templateName: 'UniversityList'
 	});
 }
 
 function classList(){
+	if (config.user == null) {
+		config.router.navigate(config.loginURL, true);
+		return;
+	}
+	var classes = new Classes();
 	var opts = {
 		el: '#content',
-		collection: new Classes(),
-		templateName: 'ClassList'
+		collection: classes,
+		templateName: 'ClassList',
+		extras: {	
+			gpa: 5.5,
+			user: config.user
+		},
+		filter: 'where user_id = ' + config.user.id
 	};
-	if (config.user)
-		opts.filter = 'where user_id = ' + config.user.id;
 	new ListViewProtected(opts);
 }
 
@@ -74,5 +85,5 @@ function login(){
 function logout(){
 	config.user = null;
 	config.headerView.render();
-	app_router.navigate("/login", true);
+	config.router.navigate("/login", true);
 }

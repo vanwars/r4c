@@ -8,9 +8,9 @@ var DetailUpdateView = DetailView.extend({
 
     render: function () {
         if (this.model)
-			this.$el.html(this.template(this.model.toJSON()));
+			DetailUpdateView.__super__.render.apply(this, arguments);
 		else
-			app_router.navigate(config.loginURL, true);
+			config.router.navigate(config.loginURL, true);
     },
 
     change: function (event) {
@@ -21,8 +21,9 @@ var DetailUpdateView = DetailView.extend({
         var target = event.target;
         var change = {};
         change[target.name] = target.value;
-		//alert(change + " - "  + target.name + " - " + target.value);
-        this.model.set(change);
+		alert(change + " - "  + target.name + " - " + target.value);
+        if(this.model.get("target.name"))
+		   this.model.set(change);
 
         // Run validation rule (if any) on changed item
         var check = this.model.validateItem(target.id);
