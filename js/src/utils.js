@@ -1,9 +1,8 @@
 var app = app || {};
 app.utils = {
-
-    // Asynchronously load templates located in separate .html files
-     templates: {},
-     loadTemplate: function(views, callback) {
+	  // Asynchronously load templates located in separate .html files
+	  loadTemplate: function(views, callback) {
+	  config.templates = config.templates || {};
         var deferreds = [];
         $.each(views, function(index, view) {
             if (app[view] == null) {

@@ -9,7 +9,7 @@ var BaseView = Backbone.View.extend({
 		this.$el.empty().append(this.template);
     },
 	showLoadingMessage: function(){
-		$(this.el).html($('<div class="fa fa-refresh fa-spin loading"></div>'));
+		$(this.el).html($('<div class="fa fa-circle-o-notch fa-spin loading"></div>'));
 	}
 
 });

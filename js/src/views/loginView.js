@@ -1,5 +1,6 @@
 var LoginView = BaseView.extend({
-	
+	field_username: 'username',
+	field_password: 'password',
 	events: {
         "click .login" : "checkCredentials"
     },
@@ -10,7 +11,6 @@ var LoginView = BaseView.extend({
 		this.showLoadingMessage();
 		this.render();
 	},
-	
     render: function() {
 		if (config.user)
 			this.$el.html("You are already logged in");
@@ -23,8 +23,10 @@ var LoginView = BaseView.extend({
 		var that = this;
 		this.collection.fetch({
 			data: {
-				query: "WHERE username='" + $('#username').val() +
-						"' and password='" + $('#password').val() + "'"
+				query: "WHERE " + that.field_username + "='" +
+						$('#' + that.field_username).val() +
+						"' and " + that.field_password + "='" +
+						$('#' + that.field_password).val() + "'"
 			}, success: function(response){
 				if(response.length ==1) {
 					config.user = that.collection.at(0);

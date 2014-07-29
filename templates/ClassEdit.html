@@ -1,4 +1,5 @@
-<h1>Register</h1>
+<a href="#" class="btn btn-default">Back</a>
+<h1>Enter Profile Information</h1>
 <form class="form-horizontal" role="form">
 	<div class="form-group">
 		<div class="alert alert-success" style="display: none">
@@ -13,6 +14,7 @@
 				id="first_name" name="first_name" value="<%= first_name == null ? '' : first_name %>">
 		</div>
 	</div>
+	
 	<!-- Last Name -->
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="last_name">Last Name</label>
@@ -21,29 +23,7 @@
 				id="last_name" name="last_name" value="<%= last_name === null ? '' : last_name %>">
 		</div>
 	</div>
-	<!-- Username -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="formGroupInputLarge">Username</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="text" value="<%= username === null ? '' : username %>" id="username" name="username" placeholder="Username">
-		</div>
-	</div>
-	<!-- Password -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="password">Password</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="password" id="password" name="password"
-				   placeholder="Enter Password" value="<%= password === null ? '' : password %>">
-		</div>
-	</div>
-	<!-- Confirm Password -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="password_confirm">Confirm Password</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="password" id="password_confirm" name="password_confirm"
-				   placeholder="Re-enter Password" value="<%= password %>">
-		</div>
-	</div>
+		
 	<!-- Email -->
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="email">Email</label>
@@ -52,6 +32,7 @@
 				   placeholder="Email Address" value="<%= email %>">
 		</div>
 	</div>
+	
 	<!-- School Name -->
 	<div class="form-group">
 		<label for="school" class="col-sm-2 control-label">School Name</label>
@@ -61,6 +42,7 @@
 		</div>
 	</div>
 	
+	<!-- Grade -->
 	<div class="form-group">
 		<label for="grade" class="col-sm-2 control-label">Grade</label>
 		<div class="col-sm-10">
@@ -76,8 +58,5 @@
 			</select>
 		</div>
 	</div>
-	<!-- Hidden Form Fields Here -->
-	<input type="hidden" id="project_id" name="project_id" value="<%= project_id %>">
-	
 	<button type="submit" class="btn btn-primary save">Save</button>
 </form>

@@ -3,16 +3,9 @@ var University = Model.extend({
 });
 
 var User = Model.extend({
-	urlRoot: 'http://dev.localground.org/api/0/forms/2/data/',
-	defaults: {
-		id: null,
-		first_name: "",
-		last_name: "",
-		username: "",
-		password: "",
-		email: "",
-		school_name: "",
-		grade: "11th",
-		project_id: 2
-	}
+	urlRoot: 'http://dev.localground.org/api/0/forms/2/data/'
+});
+
+var Class = Model.extend({
+	urlRoot: 'http://dev.localground.org/api/0/forms/3/data/'
 });

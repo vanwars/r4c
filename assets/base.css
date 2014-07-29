@@ -53,9 +53,8 @@
 .loading {
 	font-size: 100px;
 	display: block;
-	/*margin-left: auto;
-	margin-right: auto;*/
-	margin-left: 30px;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 50px;
 	width: 100px;
 	color: #CCC;
@@ -77,6 +76,10 @@ body {
 	bottom: 0;
 	width: 100%;
 	/* Set the fixed height of the footer here */
-	height: 60px;
 	background-color: #f5f5f5;
+	
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.container-footer {
 }

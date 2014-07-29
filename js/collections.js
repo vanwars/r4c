@@ -8,3 +8,8 @@ var Users = Collection.extend({
 	model: User,
 	url: 'http://dev.localground.org/api/0/forms/2/data/'
 });
+
+var Classes = Collection.extend({
+	model: Class,
+	url: 'http://dev.localground.org/api/0/forms/3/data/'
+});

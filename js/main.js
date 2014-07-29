@@ -1,4 +1,6 @@
 var config = {
+	username: 'vanwars',
+	password: 'my_password',
 	templateNames: [
 		'UniversityList',
 		'UniversityDetail',
@@ -8,31 +10,44 @@ var config = {
 		'Profile',
 		'Login',
 		'MenuLoggedIn',
-		'MenuAnonymous'	
+		'MenuAnonymous',
+		'ClassList',
+		'ClassDetail',
+		'ClassEdit'
 	],
-	templates: {},
-	username: 'vanwars',
-	password: 'my_password',
-	user: null,
-	headerView: null
-};
-
-var AppRouter = Backbone.Router.extend({
-	routes: {
+	urls: {
 		"": "mainMenu",
 		"welcome": "welcome",
 		"register": "register",
 		"profile": "profile",
+		"test": "test",
 		"login": "login",
 		"logout": "logout",
 		"universities": "universityList",
-		"universities/:id": "universityDetail"
+		"universities/:id": "universityDetail",
+		"classes": "classList",
+		"classes/:id": "classDetail"
 	},
+	user: null,
+	headerView: null,
+	footerView: null,
+	loginURL: "login"
+};
+
+var AppRouter = Backbone.Router.extend({
+	routes: config.urls,
 	welcome: function(){
 		new StaticView({
 			el: '#content',
 			templateName: 'SplashPage'	
 		});
+	},
+	test: function(){
+		new DetailView({
+			el: '#content',
+			model: new University({ id: id }),
+			templateName: 'Test'
+		});	
 	},
 	mainMenu: function(){
 		new StaticView({
@@ -47,11 +62,28 @@ var AppRouter = Backbone.Router.extend({
 			templateName: 'UniversityList'
 		});
 	},
+	classList: function(){
+		var opts = {
+			el: '#content',
+			collection: new Classes(),
+			templateName: 'ClassList'
+		};
+		if (config.user)
+			opts.filter = 'where user_id = ' + config.user.id;
+		new ListViewProtected(opts);
+	},
 	universityDetail: function (id) {
 		new DetailView({
 			el: '#content',
 			model: new University({ id: id }),
 			templateName: 'UniversityDetail'
+		});
+	},
+	classDetail: function (id) {
+		new DetailViewProtected({
+			el: '#content',
+			model: new Class({ id: id }),
+			templateName: 'ClassDetail'
 		});
 	},
 	profile: function () {
@@ -81,46 +113,3 @@ var AppRouter = Backbone.Router.extend({
 		app_router.navigate("/login", true);
 	}
 });
-
-app_router = new AppRouter();
-
-
-$(function() {
-	//1. Append crossDomain = true option:
-	var proxiedSync = Backbone.sync;
-	Backbone.sync = function(method, model, options) {
-		options || (options = {});
-		options.crossDomain = true;
-		return proxiedSync(method, model, options);
-	};
-	
-	//2. Attach basic authentication credentials to each request.
-	//	 Note that this is insecure and credentials are being
-	//	 passed via plain text.
-	$.ajaxSetup({
-		beforeSend: function(xhr){
-			xhr.setRequestHeader("Authorization",
-				"Basic " + btoa(config.username + ":" + config.password));
-		}
-	});
-	
-	//3. Start the router:
-	app.utils.loadTemplate(config.templateNames, function() {
-		config.headerView = new HeaderView({
-			el: '#menu',
-			loggedInTemplateName: 'MenuLoggedIn',
-			anonymousTemplateName: 'MenuAnonymous'	
-		});
-		Backbone.history.start();
-	});
-	
-	
-	
-		
-});
-
-
-
-
-
-

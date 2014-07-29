@@ -1,0 +1,10 @@
+<h1>Courses Taken</h1>
+<div class="list-group">
+	<% _.each(list, function(course) { %>
+	<a class="list-group-item" href="#/classes/<%= course.get('id') %>">
+		<i class="fa fa-institution fa-fw"></i>&nbsp;
+		<%= course.get('course_name') %> 
+		<span class="pull-right"><%= course.get('letter_grade') %></span>
+	</a>
+	<% }); %>
+</div>

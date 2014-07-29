@@ -10,7 +10,7 @@ var DetailUpdateView = DetailView.extend({
         if (this.model)
 			this.$el.html(this.template(this.model.toJSON()));
 		else
-			this.$el.html("You are not logged in");
+			app_router.navigate(config.loginURL, true);
     },
 
     change: function (event) {
@@ -21,6 +21,7 @@ var DetailUpdateView = DetailView.extend({
         var target = event.target;
         var change = {};
         change[target.name] = target.value;
+		//alert(change + " - "  + target.name + " - " + target.value);
         this.model.set(change);
 
         // Run validation rule (if any) on changed item
