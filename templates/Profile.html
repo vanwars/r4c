@@ -1,62 +1,9 @@
-<a href="#" class="btn btn-default">Back</a>
-<h1>Enter Profile Information</h1>
-<form class="form-horizontal" role="form">
-	<div class="form-group">
-		<div class="alert alert-success" style="display: none">
-			<b></b>
-		</div>
-	</div>
-	<!-- First Name -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="first_name">First Name:</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="text" placeholder="First Name"
-				id="first_name" name="first_name" value="<%= first_name == null ? '' : first_name %>">
-		</div>
-	</div>
-	
-	<!-- Last Name -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="last_name">Last Name</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="text" placeholder="Last Name"
-				id="last_name" name="last_name" value="<%= last_name === null ? '' : last_name %>">
-		</div>
-	</div>
-		
-	<!-- Email -->
-	<div class="form-group">
-		<label class="col-sm-2 control-label" for="email">Email</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="text" id="email" name="email"
-				   placeholder="Email Address" value="<%= email %>">
-		</div>
-	</div>
-	
-	<!-- School Name -->
-	<div class="form-group">
-		<label for="school" class="col-sm-2 control-label">School Name</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="school_name" name="school_name"
-				   placeholder="School Name" value="<%= school_name %>">
-		</div>
-	</div>
-	
-	<!-- Grade -->
-	<div class="form-group">
-		<label for="grade" class="col-sm-2 control-label">Grade</label>
-		<div class="col-sm-10">
-			<select class="form-control" id="grade" name="grade" value="<%= grade %>">
-				<option
-				<%= grade == '9th' ? 'selected' : '' %>>9th</option>
-				<option
-				<%= grade == '10th' ? 'selected' : '' %>>10th</option>
-				<option
-				<%= grade == '11th' ? 'selected' : '' %>>11th</option>
-				<option
-				<%= grade == '12th' ? 'selected' : '' %>>12th</option>
-			</select>
-		</div>
-	</div>
-	<button type="submit" class="btn btn-primary save">Save</button>
-</form>
+<h1>Profile</h1>
+username: <%= username %><br>
+First Name <%= first_name %><br>
+Last Name: <%= last_name %><br>
+Email Address: <%= email %><br>
+School: <%= school_name %><br>
+Grade: <%= grade %><br>
+<a class="btn btn-default" href="#/profile/edit">Edit</a>
+<a class="btn btn-primary" href="#/classes">View Classes</a>

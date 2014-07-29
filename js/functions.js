@@ -61,10 +61,20 @@ function classDetail(id) {
 }
 
 function profile() {
-	new DetailUpdateView({
+	new DetailView({
 		el: '#content',
+		restricted: true,
 		model: config.user,
 		templateName: 'Profile'	
+	});	
+}
+
+function editProfile() {
+	new DetailUpdateView({
+		el: '#content',
+		restricted: true,
+		model: config.user,
+		templateName: 'ProfileEdit'	
 	});	
 }
 

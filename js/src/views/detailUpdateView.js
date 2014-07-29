@@ -21,8 +21,7 @@ var DetailUpdateView = DetailView.extend({
         var target = event.target;
         var change = {};
         change[target.name] = target.value;
-		alert(change + " - "  + target.name + " - " + target.value);
-        if(this.model.get("target.name"))
+		if(this.model.get(target.name))
 		   this.model.set(change);
 
         // Run validation rule (if any) on changed item
