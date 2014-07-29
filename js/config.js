@@ -27,10 +27,12 @@ var config = {
 		"classes": classList,
 		"classes/:id": classDetail
 	},
-	user: null,
-	universities: null,
-	headerView: null,
-	footerView: null,
 	router: null,
-	loginURL: "login"
+	loginURL: "login",
+	user: null,
+	context: {
+		universities: null
+	},
+	headerView: null,
+	footerView: null
 };

@@ -1,11 +1,9 @@
 var ListView = BaseView.extend({
-	events: {},
 	collection: null,
 	filter: null,
 	initialize: function(opts) {
-		$.extend(this, opts);
 		var that = this;
-		this.template = _.template(config.templates[this.templateName]);
+		if(!this._initialize(opts)) { return };
 		this.showLoadingMessage();
 		if (this.collection.length==0) {
 			this.collection.fetch({
@@ -24,9 +22,8 @@ var ListView = BaseView.extend({
 	},
 	
     render: function() {
-		var context = { list: this.collection.models };
-		$.extend(context, this.extras);
-        this.$el.html(this.template(context));
+		this.evaluateContext({ list: this.collection.models });
+        this.$el.html(this.template(this.context));
     }
 
 });

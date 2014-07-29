@@ -29,17 +29,18 @@ function classList(){
 		return;
 	}
 	var classes = new Classes();
-	var opts = {
+	new ListView({
 		el: '#content',
 		collection: classes,
 		templateName: 'ClassList',
-		extras: {	
-			gpa: 5.5,
-			user: config.user
+		restricted: true,
+		context: {	
+			gpa: function(){
+				return classes.average("points_un_weighted");
+			}
 		},
 		filter: 'where user_id = ' + config.user.id
-	};
-	new ListViewProtected(opts);
+	});
 }
 
 function universityDetail(id) {
@@ -51,8 +52,9 @@ function universityDetail(id) {
 }
 
 function classDetail(id) {
-	new DetailViewProtected({
+	new DetailView({
 		el: '#content',
+		restricted: true,
 		model: new Class({ id: id }),
 		templateName: 'ClassDetail'
 	});

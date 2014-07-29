@@ -5,13 +5,12 @@ var LoginView = BaseView.extend({
         "click .login" : "checkCredentials"
     },
 	initialize: function(opts) {
-		$.extend(this, opts);
-		var that = this;
-		this.template = _.template(config.templates[this.templateName]);
+		if(!this._initialize(opts)) { return };
 		this.showLoadingMessage();
 		this.render();
 	},
     render: function() {
+		this.evaluateContext();
 		if (config.user)
 			this.$el.html("You are already logged in");
 		else

@@ -1,4 +1,4 @@
-var HeaderView = Backbone.View.extend({
+var HeaderView = BaseView.extend({
 	anonymousTemplateName: null,
 	loggedInTemplateName: null,
 	user: null,
@@ -8,10 +8,8 @@ var HeaderView = Backbone.View.extend({
 	},
     render: function() {
 		this.setTemplate();
-		if (this.user)
-			this.$el.html(this.template(this.user.toJSON()));
-		else
-			this.$el.html(this.template);
+		this.evaluateContext();
+		this.$el.html(this.template(this.context));
     },
 	showLoadingMessage: function(){
 		$(this.el).html($('<div class="fa fa-refresh fa-spin loading"></div>'));

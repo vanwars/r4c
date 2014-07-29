@@ -1,13 +1,11 @@
 var DetailView = BaseView.extend({
 	model: null,
 	initialize: function(opts) {
-		opts = opts || {};
-		$.extend(this, opts);
+		if(!this._initialize(opts)) { return };
 		if (opts.model == null) {
 			alert("you must define the model attribute when you're creating a DetailView.");
 			return;
 		}
-		this.template = _.template(config.templates[this.templateName]);
 		this.showLoadingMessage();
 		this.initModel();
 	},
@@ -24,11 +22,8 @@ var DetailView = BaseView.extend({
 	},
 
     render: function () {
-		var context = {};
-		$.extend(context, this.model.toJSON());
-		$.extend(context, this.extras);
-        this.$el.html(this.template(context));
-        return this;
+		this.evaluateContext(this.model.toJSON());
+        this.$el.html(this.template(this.context));
     }
 	
 });
