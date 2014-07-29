@@ -32,4 +32,21 @@ R4C was built with the [Local Ground Data API](https://github.com/LocalGround/lo
 
 ### views.js
 This 
- 
+
+
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+
+var config = {
+	templateNames: [],
+	urls: {
+		"": mainMenu,
+		"welcome": welcome
+	},
+	user: null,
+	headerView: null,
+	footerView: null,
+	loginURL: "login"
+};
+```
