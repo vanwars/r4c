@@ -1,4 +1,4 @@
-Ready4College (R4C) via the Local Ground Web Kit
+The Local Ground Web Kit
 ==========
 The Local Ground Web Kit is a series of HTML / CSS / JavaScript files that makes it easy to create apps and interact with Local Ground data. Ready for College (R4C) is an example of an app that you can create with the kit.
 
@@ -62,21 +62,68 @@ Returns a floating point number of the sum of the ```field_name``` over all of t
 * **collections.average(field_name)**
 Returns a floating point number of the average of the ```field_name``` over all of the model instances in the collection.
 
-####3. The HTML Templates
+####3. Templates
 The Local Ground Web Kit uses the ```index.html``` file as the harness for your web app. Within this harness, you can replace various containers with dynamic HTML content. In the R4C app, students replaced three sections of the app: 
 
 1. The ```<div id="menu" class="collapse navbar-collapse"></div>``` DIV, which corresponds to the top menu,
 2. The  ```<div id="content" class="container"></div>``` DIV, which corresponds to the main content area, and
 3. The ```<div class="footer"></div>``` DIV, which corresponds to the footer.
 
-In order to create your own dynamic content for a particular section of the harness, there are four steps:
+In order to create your own dynamic content for a particular section of the harness, you must first create a new HTML template underneath your ```templates``` directory. Let’s create one called ```MySplashPage.html``` as follows:
 
-1. Create a new file in your ```templates``` directory. Let’s say we create a new file called ```MySplashPage.html``` in our ```templates``` directory.
-2. Create a new function and view within the ```js/functions.js``` file (explained below). For now, let’s just say we called the function ```welcome```.
-3. Add an entry to the configuration file (explained below) within the ```templateNames``` list.
-4. Decide what the URL path of your content will be. So, way we wanted 
+```html
+<h1>Welcome!</h1>
+<p>This is my splash page.</p>
+```
 
-####4. The Configuration File
+####4. Views
+Once you have created your template, you may use one of six Local Ground View classes to render your content, listed below. Local Ground View classes extend Backbone’s [View]() class. In addition to the standard Backbone functionality, all views handle the following arguments:
+
+* **context**: A list of additional functions and variables that can be accessed by an HTML template.
+* **restricted**: A boolean flag indicating whether a user needs to be authenticated in order to access the particular view.
+
+In the R4C example, views are typically instantiated in the ```js/functions.js``` file and accessed when the particular url route is requested.
+
+#####StaticView
+Renders static HTML content without any data.
+
+#####ListView
+Renders lists of data. In addition to the standard arguments, **ListView** has two additional arguments:
+
+* **collection** ```required```: An instance of a particular collection, say, ```new Universites()```
+* **filter**: An optional string that serves as a server-side Local Ground filter. So, for instance, if we wanted to only return universities that were part of the University of California system, our filter would be: ```filter: "where university_type = 'UC'"```.
+
+#####DetailView
+Renders a single data record. **DetailView** has one additional argument:
+
+* **model** ```required```: An instance of a particular model, say, ```new University()```
+
+#####DetailUpdateView
+Renders a form of updatable data. Same arguments as **DetailView**.
+
+#####HeaderView
+Renders a header view. It takes two additional arguments: 
+
+* **anonymousTemplateName** ```required```: The name of the template to display for unauthenticated users.
+* **loggedInTemplateName**: The name of the template to display for authenticated users (if applicable).
+
+#####LoginView
+Implements all of the functionality needed to authenticate (if you create a users data table). It takes three additional arguments: 
+
+* **collection** ```required```: An instance of your users table in Local Ground. Any table can be a users table, but it must have a column which stores username, and a column that stores the password for every user. For example, ```collection, = new Users()``` (remember that you also have to define the User class in ```js/models.js``` and the Users class in ```js/collections.js```.
+* **field_username**: The field name that corresponds to your username column in your Local Ground users table. Defaults to "username”.
+* **field_password**: The field name that corresponds to your password column in your Local Ground users table. Defaults to "password”.
+
+####5. Functions
+The Local Ground Web Kit is design so that new content is rendered primarily by 
+
+2. Create a new function and view within the ```js/functions.js``` file (explained below). For now, let’s call this function ```welcome```, where the purpose of the welcome function is to insert the HTML contained within ```MySplashPage.html``` into the ```<div id="content" class="container"></div>``` of the ```index.html``` harness.
+
+
+
+
+####6. The Configuration File
+The purpose of the configuration file ```js/config.js``` is to connect everything together.
 
 ```javascript
 var config = {
@@ -97,32 +144,4 @@ var config = {
 	user: null
 };
 ```
- 
-### config.js
-
-### models.js
-
-### collections.js
-
-### views.js
-This 
-
-
-```javascript
-var s = "JavaScript syntax highlighting";
-alert(s);
-
-var config = {
-	templateNames: [],
-	urls: {
-		"": mainMenu,
-		"welcome": welcome
-	},
-	user: null,
-	headerView: null,
-	footerView: null,
-	loginURL: "login"
-};
-```
-
 
