@@ -15,10 +15,10 @@ var Collection = Backbone.Collection.extend({
 	comparator: function( university ) {
 		return university.get(this.sort_field);
 	},
-	sum: function(field) {
-		return this.reduce(function(memo, value) { return memo + value.get(field) }, 0);
+	sum: function(field_name) {
+		return this.reduce(function(memo, value) { return memo + value.get(field_name) }, 0);
 	},
-	average: function(field) {
-		return this.sum(field) / this.models.length;
+	average: function(field_name) {
+		return this.sum(field_name) / this.models.length;
 	}
 });

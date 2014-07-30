@@ -15,7 +15,6 @@ var LoginView = BaseView.extend({
 			this.$el.html("You are already logged in");
 		else
 			this.$el.html(this.template());
-		
     },
 	
 	checkCredentials: function(evt){
@@ -47,7 +46,6 @@ var LoginView = BaseView.extend({
 			}
 		});
 		evt.preventDefault();
-		
 	}
 
 });
