@@ -167,6 +167,11 @@ var config = {
 * **loginURL**: If you are handling authentication, loginURL refers to the path where you ask users to login. Important for Views where the restricted flag is set.
 * **user**: If you are handling authentication, this value will be automatically populated by the LoginView when users successfully log in.
 
-###III. Other Notes
-You’re welcome to download the R4C repository and try out some of the functionality for yourself. Please note that because the template loader uses AJAX and JQuery, the code will only work as a website (url begins with http:// or https://, not file:::/). We’d also like your feedback. Please send comments to info [AT] localground [DOT] org
+Important: Currently the API uses Basic Authentication, so that usernames and passwords are sent in plaintext. We plan to make this more secure in future releases. Please do not store any sensitive information in Local Ground.
+
+Other Notes
+---------
+You’re welcome to download the R4C repository and try out some of the functionality for yourself. The ultimate goal of this project is to provide novice programmers with some experience working with data as they learn how to make apps. We want to make the JavaScript API even simpler, so suggestions are welcomed. 
+
+Also, please note that because the template loader uses AJAX, the code will only work as a server-hosted website (i.e. url begins with http:// or https://, not file:///). We’d also like your feedback. Please send comments to info [AT] localground [DOT] org
 
