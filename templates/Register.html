@@ -10,7 +10,7 @@
 		<label class="col-sm-2 control-label" for="first_name">First Name:</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="text" placeholder="First Name"
-				id="first_name" name="first_name" value="<%= first_name == null ? '' : first_name %>">
+				id="first_name" name="first_name" value="">
 		</div>
 	</div>
 	<!-- Last Name -->
@@ -18,14 +18,14 @@
 		<label class="col-sm-2 control-label" for="last_name">Last Name</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="text" placeholder="Last Name"
-				id="last_name" name="last_name" value="<%= last_name === null ? '' : last_name %>">
+				id="last_name" name="last_name" value="">
 		</div>
 	</div>
 	<!-- Username -->
 	<div class="form-group">
 		<label class="col-sm-2 control-label" for="formGroupInputLarge">Username</label>
 		<div class="col-sm-10">
-			<input class="form-control" type="text" value="<%= username === null ? '' : username %>" id="username" name="username" placeholder="Username">
+			<input class="form-control" type="text" value="" id="username" name="username" placeholder="Username">
 		</div>
 	</div>
 	<!-- Password -->
@@ -33,7 +33,7 @@
 		<label class="col-sm-2 control-label" for="password">Password</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="password" id="password" name="password"
-				   placeholder="Enter Password" value="<%= password === null ? '' : password %>">
+				   placeholder="Enter Password" value="">
 		</div>
 	</div>
 	<!-- Confirm Password -->
@@ -41,7 +41,7 @@
 		<label class="col-sm-2 control-label" for="password_confirm">Confirm Password</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="password" id="password_confirm" name="password_confirm"
-				   placeholder="Re-enter Password" value="<%= password %>">
+				   placeholder="Re-enter Password" value="">
 		</div>
 	</div>
 	<!-- Email -->
@@ -49,7 +49,7 @@
 		<label class="col-sm-2 control-label" for="email">Email</label>
 		<div class="col-sm-10">
 			<input class="form-control" type="text" id="email" name="email"
-				   placeholder="Email Address" value="<%= email %>">
+				   placeholder="Email Address" value="">
 		</div>
 	</div>
 	<!-- School Name -->
@@ -57,27 +57,23 @@
 		<label for="school" class="col-sm-2 control-label">School Name</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="school_name" name="school_name"
-				   placeholder="School Name" value="<%= school_name %>">
+				   placeholder="School Name" value="">
 		</div>
 	</div>
 	
 	<div class="form-group">
 		<label for="grade" class="col-sm-2 control-label">Grade</label>
 		<div class="col-sm-10">
-			<select class="form-control" id="grade" name="grade" value="<%= grade %>">
-				<option
-				<%= grade == '9th' ? 'selected' : '' %>>9th</option>
-				<option
-				<%= grade == '10th' ? 'selected' : '' %>>10th</option>
-				<option
-				<%= grade == '11th' ? 'selected' : '' %>>11th</option>
-				<option
-				<%= grade == '12th' ? 'selected' : '' %>>12th</option>
+			<select class="form-control" id="grade" name="grade" value="">
+				<option>9th</option>
+				<option>10th</option>
+				<option>11th</option>
+				<option>12th</option>
 			</select>
 		</div>
 	</div>
 	<!-- Hidden Form Fields Here -->
-	<input type="hidden" id="project_id" name="project_id" value="<%= project_id %>">
+	<input type="hidden" id="project_id" name="project_id" value="">
 	
 	<button type="submit" class="btn btn-primary save">Save</button>
 </form>

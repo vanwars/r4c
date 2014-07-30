@@ -4,13 +4,13 @@ Model = Backbone.Model.extend({
 		$.extend(this, opts);
 		this.validators = {};
 
-        this.validators.first_name = function (value) {
+        /*this.validators.first_name = function (value) {
             return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a first name"};
         };
 
         this.validators.last_name = function (value) {
 			return value.length > 0 ? {isValid: true} : {isValid: false, message: "You must enter a last name"};
-		};
+		};*/
 	},
 	
 	url: function() {

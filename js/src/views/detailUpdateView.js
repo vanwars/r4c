@@ -21,8 +21,7 @@ var DetailUpdateView = DetailView.extend({
         var target = event.target;
         var change = {};
         change[target.name] = target.value;
-		if(this.model.get(target.name))
-		   this.model.set(change);
+		this.model.set(change);
 
         // Run validation rule (if any) on changed item
         var check = this.model.validateItem(target.id);
@@ -40,6 +39,7 @@ var DetailUpdateView = DetailView.extend({
             app.utils.displayValidationErrors(check.messages);
             return false;
         }
+		this.model.set("project_id", config.project_id);
         this.saveModel();
         return false;
     },

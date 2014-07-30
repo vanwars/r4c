@@ -36,5 +36,6 @@ var config = {
 		universities: null
 	},
 	headerView: null,
-	footerView: null
+	footerView: null,
+	project_id: 2
 };
