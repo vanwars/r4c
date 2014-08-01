@@ -1,9 +1,16 @@
 var HeaderView = BaseView.extend({
 	anonymousTemplateName: null,
 	loggedInTemplateName: null,
+	events: {
+		'click .nav li > a': 'hideMenu'
+	},
 	initialize: function(opts) {
 		$.extend(this, opts);
 		this.render();
+	},
+	hideMenu: function(){
+		/* For mobile view: menu doesn't close automatically */
+		$('.fa-bars').trigger('click');
 	},
     render: function() {
 		this.setTemplate();

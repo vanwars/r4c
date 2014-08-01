@@ -19,15 +19,19 @@ var LoginView = BaseView.extend({
 	
 	checkCredentials: function(evt){
 		var that = this;
+		var username = $('#' + that.field_username).val()
+		var password = $('#' + that.field_password).val()
 		this.collection.fetch({
 			data: {
 				query: "WHERE " + that.field_username + "='" +
-						$('#' + that.field_username).val() +
+						username +
 						"' and " + that.field_password + "='" +
-						$('#' + that.field_password).val() + "'"
+						password + "'"
 			}, success: function(response){
 				if(response.length ==1) {
 					config.user = that.collection.at(0);
+					localStorage["username"] = username;
+					localStorage["password"] = password;
 					new HeaderView({
 						el: '#menu',
 						loggedInTemplateName: 'MenuLoggedIn',

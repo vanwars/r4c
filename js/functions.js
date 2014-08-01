@@ -13,13 +13,34 @@ function mainMenu(){
 }
 
 function universityList(){
-	if (config.universities == null)
-		config.universities = new Universities();
-	
 	new ListView({
 		el: '#content',
-		collection: config.universities,
+		collection: new Universities(),
 		templateName: 'UniversityList'
+	});
+}
+
+function ucs(){
+	new ListView({
+		el: '#content',
+		collection: new Universities(),
+		filter: "WHERE university_type = 'UC'",
+		templateName: 'UniversityList',
+		context: {	
+			filter_name: 'UC System'
+		}
+	});
+}
+
+function calState(){
+	new ListView({
+		el: '#content',
+		collection: new Universities(),
+		filter: "WHERE university_type = 'Cal State'",
+		templateName: 'UniversityList',
+		context: {	
+			filter_name: 'Cal State System'
+		}
 	});
 }
 
@@ -96,6 +117,9 @@ function login(){
 
 function logout(){
 	config.user = null;
-	config.headerView.render();
+	localStorage.clear();
+	if (config.headerView) {
+		config.headerView.render();
+	}
 	config.router.navigate("/login", true);
 }

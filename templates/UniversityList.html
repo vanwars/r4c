@@ -1,4 +1,10 @@
-<h1>Universities</h1>
+<h1>
+	Universities<% if (typeof filter_name !== "undefined") { %>: <%= filter_name %><% } %>
+</h1>
+<div class="row" style="margin:0px 0px 20px 0px;">
+	<a href="#/universities/uc" class="btn btn-default">UCs</a>
+	<a href="#/universities/cal-state" class="btn btn-default">Cal States</a>
+</div>
 <div class="list-group">
 	<% _.each(list, function(university) { %>
 	<a class="list-group-item" href="#/universities/<%= university.get('id') %>">

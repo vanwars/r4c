@@ -24,13 +24,46 @@ $( document ).ready(function() {
 		}
 	});
 	
-	//3. Start the router:
+	//3. load the templates and render the first page:
 	app.utils.loadTemplate(config.templateNames, function() {
+		Backbone.history.start();
+		// if a user was previously logged in,
+		// log him/her back in again:
+		loginUser();
+	});
+	
+	
+	//loginUser()
+	
+});
+
+function loginUser() {
+	var username = localStorage["username"];
+	var password = localStorage["password"];
+	if (username && password) {
+		var users = new Users();
+		users.fetch({
+			data: {
+				query: "WHERE username ='" + username +
+					"' and password ='" + password + "'"
+			},
+			success: function(response){
+				if(response.length ==1)
+					config.user = users.at(0);
+				config.headerView = new HeaderView({
+					el: '#menu',
+					loggedInTemplateName: 'MenuLoggedIn',
+					anonymousTemplateName: 'AnonymousMenu',
+					user: config.user
+				});
+			}
+		});
+	}
+	else {
 		config.headerView = new HeaderView({
 			el: '#menu',
 			loggedInTemplateName: 'MenuLoggedIn',
 			anonymousTemplateName: 'MenuAnonymous'	
 		});
-		Backbone.history.start();
-	});
-});
+	}
+}
