@@ -125,7 +125,7 @@ Implements all of the functionality needed to authenticate (if you create a user
 * **field_password**: The field name that corresponds to your password column in your Local Ground users table. Defaults to "password”.
 
 ####5. Functions
-The Local Ground Web Kit is design so that new content is rendered primarily by attaching url paths to corresponding functions. For example, “Every time a user accesses the mysite.com#/universities path, show a list of universities on the page. If you look at the R4C sample [functions page](https://github.com/vanwars/r4c/blob/master/js/functions.js), you can see that each function on the page essentially instantiates one of the six views listed above. So, for example, if you wanted create a function that showed a list of universities, you could create one as follows: 
+The Local Ground Web Kit is design so that new content is rendered primarily by attaching url paths to corresponding functions. For example, “Every time a user accesses the mysite.com#/universities path, show a list of universities on the page." If you look at the R4C sample [functions page](https://github.com/vanwars/r4c/blob/master/js/functions.js), you can see that each function on the page essentially instantiates one of the six views listed above. So, for example, if you wanted create a function that showed a list of universities, you could create one as follows: 
 
 ```javascript
 function universityList(){
