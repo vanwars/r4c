@@ -10,7 +10,9 @@ var HeaderView = BaseView.extend({
 	},
 	hideMenu: function(){
 		/* For mobile view: menu doesn't close automatically */
-		$('.fa-bars').trigger('click');
+		if($('.navbar-toggle').css('display') !='none'){
+			$(".navbar-toggle").click();
+		}
 	},
     render: function() {
 		this.setTemplate();
