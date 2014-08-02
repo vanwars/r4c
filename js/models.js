@@ -10,7 +10,9 @@ var User = Model.extend({
 		var that = this;
 		this.classes = new Classes();
 		this.classes.fetch({
-			success: function(reponse){
+			data: {
+				query: 'where user_id = ' + that.get("id")
+			}, success: function(reponse){
 				that.gpa_unweighted = that.classes.average("points_un_weighted");
 				//alert(that.gpa_unweighted);
 			}
