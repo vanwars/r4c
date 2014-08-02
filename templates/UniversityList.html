@@ -1,15 +1,56 @@
-<h1>
-	Universities<% if (typeof filter_name !== "undefined") { %>: <%= filter_name %><% } %>
-</h1>
-<div class="row" style="margin:0px 0px 20px 0px;">
-	<a href="#/universities/uc" class="btn btn-default">UCs</a>
-	<a href="#/universities/cal-state" class="btn btn-default">Cal States</a>
-</div>
+<h1>Universities</h1>
+
+<!-- Begin Form -->
+<form class="form-horizontal" role="form" style="max-width:450px;">
+	<div class="form-group">
+		<label class="col-sm-4 control-label" for="university_type">University Type:</label>
+		<div class="col-sm-6">
+			<select class="form-control" id="university_type"
+					name="university_type">
+				<option value="-1">Both</option>
+				<option value="UC" <%= universityType == 'UC' ? 'selected' : '' %>>UC</option>
+				<option value="Cal State" <%= universityType == 'Cal State' ? 'selected' : '' %>>Cal State</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-4 control-label">GPA Weighted:</label>
+		<div class="col-sm-6">
+			<div id="slider_weighted"></div>
+			<div id="range_label_weighted"></div>
+			<input type="hidden" class="form-control" id="min_gpa_weighted" value="2.0" />
+			<input type="hidden" class="form-control" id="max_gpa_weighted" value="5.0" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-4 control-label">GPA Un-Weighted:</label>
+		<div class="col-sm-6">
+			<div id="slider_unweighted"></div>
+			<div id="range_label_unweighted"></div>
+			<input type="hidden" class="form-control" id="min_gpa_unweighted" value="2.0" />
+			<input type="hidden" class="form-control" id="max_gpa_unweighted" value="4.0" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-4"></label>
+		<div class="col-sm-6">
+			<button class="btn btn-primary">Search</button>
+		</div>
+	</div>
+</form>
+<!-- End Form -->
+
+
+<!-- Begin list -->
 <div class="list-group">
 	<% _.each(list, function(university) { %>
 	<a class="list-group-item" href="#/universities/<%= university.get('id') %>">
 		<i class="fa fa-institution fa-fw"></i>&nbsp;
 		<%= university.get('university_name') %>
+		<span class="pull-right">
+			<%= university.get('average_gpa_unweighted') %>	/
+			<%= university.get('average_gpa_weighted') %>	
+		</span>
 	</a>
 	<% }); %>
 </div>

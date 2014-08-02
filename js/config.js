@@ -25,8 +25,7 @@ var config = {
 		"login": login,
 		"logout": logout,
 		"universities": universityList,
-		"universities/uc": ucs,
-		"universities/cal-state": calState,
+		"universities/search/:query": universityList,
 		"universities/:id": universityDetail,
 		"classes": classList,
 		"classes/:id": classDetail

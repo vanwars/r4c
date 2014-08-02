@@ -1,3 +1,6 @@
+var universityListView;
+
+
 function welcome(){
 	new StaticView({
 		el: '#content',
@@ -12,36 +15,16 @@ function mainMenu(){
 	});
 }
 
-function universityList(){
-	new ListView({
-		el: '#content',
-		collection: new Universities(),
-		templateName: 'UniversityList'
-	});
-}
-
-function ucs(){
-	new ListView({
-		el: '#content',
-		collection: new Universities(),
-		filter: "WHERE university_type = 'UC'",
-		templateName: 'UniversityList',
-		context: {	
-			filter_name: 'UC System'
-		}
-	});
-}
-
-function calState(){
-	new ListView({
-		el: '#content',
-		collection: new Universities(),
-		filter: "WHERE university_type = 'Cal State'",
-		templateName: 'UniversityList',
-		context: {	
-			filter_name: 'Cal State System'
-		}
-	});
+function universityList(filter){
+	if (universityListView == null) {
+		universityListView = new UniversityListView({
+			el: '#content',
+			collection: new Universities(),
+			templateName: 'UniversityList'
+		});
+	}
+	universityListView.setFilter(filter);
+	universityListView.query();
 }
 
 function classList(){
