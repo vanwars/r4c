@@ -21,7 +21,8 @@ var ListView = BaseView.extend({
 		var that = this;
 		this.collection.fetch({
 			data: {
-				query: this.filter	
+				query: this.filter,
+				page_size: 50
 			},
 			success: function(){
 				that.render();

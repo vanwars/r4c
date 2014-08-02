@@ -4,6 +4,7 @@ var config = {
 	templateNames: [
 		'UniversityList',
 		'UniversityDetail',
+		'UniversityMap',
 		'SplashPage',
 		'Register',
 		'MainMenu',
@@ -26,6 +27,7 @@ var config = {
 		"logout": logout,
 		"universities": universityList,
 		"universities/search/:query": universityList,
+		"universities/map": universityMap,
 		"universities/:id": universityDetail,
 		"classes": classList,
 		"classes/:id": classDetail

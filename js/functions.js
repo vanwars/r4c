@@ -27,6 +27,14 @@ function universityList(filter){
 	universityListView.query();
 }
 
+function universityMap() {
+	new MapView({
+		el: '#content',
+		collection: new Universities(),
+		templateName: 'UniversityMap'
+	});
+}
+
 function classList(){
 	if (config.user == null) {
 		config.router.navigate(config.loginURL, true);
