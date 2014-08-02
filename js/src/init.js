@@ -53,7 +53,7 @@ function loginUser() {
 				config.headerView = new HeaderView({
 					el: '#menu',
 					loggedInTemplateName: 'MenuLoggedIn',
-					anonymousTemplateName: 'AnonymousMenu',
+					anonymousTemplateName: 'MenuAnonymous',
 					user: config.user
 				});
 			}

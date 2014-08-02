@@ -29,10 +29,10 @@ var UniversityListView = ListView.extend({
 		if(this.universityType)
 			this.sql += "university_type='" + this.universityType + "' AND ";
 					
-		this.sql += "average_gpa_weighted >= " + this.minGPAUnweighted + " AND " +
+		this.sql += "average_gpa_weighted >= " + this.minGPAWeighted + " AND " +
 				"average_gpa_weighted <= " + this.maxGPAWeighted + " AND ";
 					
-		this.sql += "average_gpa_unweighted >= " + this.minGPAWeighted + " AND " +
+		this.sql += "average_gpa_unweighted >= " + this.minGPAUnweighted + " AND " +
 				"average_gpa_unweighted <= " + this.maxGPAUnweighted;
 		this.updateContext();
 	},
