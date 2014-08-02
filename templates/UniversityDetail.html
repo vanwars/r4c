@@ -2,4 +2,9 @@
 Name: <%= university_name %> <br>
 Location: <%= address %> <br>
 Average Weighted GPA: <%= average_gpa_weighted %> <br>
-<img class="university-logo" src="<%= image_link %>" />
+<img class="university-logo" src="<%= image_link %>" /><br>
+
+<% if (typeof(user) != "undefined") { %>
+	<br>
+	Your GPA (Unweighted): <%= user.gpa_unweighted %>
+<% } %>

@@ -30,6 +30,7 @@ var LoginView = BaseView.extend({
 			}, success: function(response){
 				if(response.length ==1) {
 					config.user = that.collection.at(0);
+					config.user.fetchClasses();
 					localStorage["username"] = username;
 					localStorage["password"] = password;
 					new HeaderView({

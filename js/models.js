@@ -3,7 +3,19 @@ var University = Model.extend({
 });
 
 var User = Model.extend({
-	urlRoot: 'http://dev.localground.org/api/0/forms/2/data/'
+	classes: null,
+	gpa_unweighted: null,
+	urlRoot: 'http://dev.localground.org/api/0/forms/2/data/',
+	fetchClasses: function(){
+		var that = this;
+		this.classes = new Classes();
+		this.classes.fetch({
+			success: function(reponse){
+				that.gpa_unweighted = that.classes.average("points_un_weighted");
+				//alert(that.gpa_unweighted);
+			}
+		});
+	}
 });
 
 var Class = Model.extend({

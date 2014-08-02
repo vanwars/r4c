@@ -50,6 +50,7 @@ function loginUser() {
 			success: function(response){
 				if(response.length ==1)
 					config.user = users.at(0);
+					config.user.fetchClasses();
 				config.headerView = new HeaderView({
 					el: '#menu',
 					loggedInTemplateName: 'MenuLoggedIn',
