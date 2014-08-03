@@ -8,6 +8,13 @@ function welcome(){
 	});
 }
 
+function insight(){
+	new StaticView({
+		el: '#content',
+		templateName: 'insight'	
+	});
+}
+
 function mainMenu(){
 	new StaticView({
 		el: '#content',

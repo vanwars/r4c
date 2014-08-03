@@ -1,6 +1,8 @@
 var MapView = ListView.extend({
 	map: null,
 	markers: [],
+	infowindow: new google.maps.InfoWindow({
+	}),
     render: function() {
 		
 		//alert($(window).height());
@@ -55,6 +57,14 @@ var MapView = ListView.extend({
 				google.maps.event.addListener(marker, 'click', function() {
 					config.router.navigate("/universities/" + this.id, true);
 				});
+				google.maps.event.addListener(marker, 'mouseover', function() {
+        			  that.infowindow.setContent(model.get("university_name"));
+  						  that.infowindow.open(that.map,marker);
+    			});
+
+    			google.maps.event.addListener(marker, 'mouseout', function() {
+        			that.infowindow.close();
+    			});
 				that.markers.push(marker);
 			}
 		});

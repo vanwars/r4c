@@ -15,11 +15,13 @@ var config = {
 		'MenuAnonymous',
 		'ClassList',
 		'ClassDetail',
-		'ClassEdit'
+		'ClassEdit',
+		'insight'
 	],
 	urls: {
 		"": mainMenu,
 		"welcome": welcome,
+		"insight": insight,
 		"register": register,
 		"profile": profile,
 		"profile/edit": editProfile,

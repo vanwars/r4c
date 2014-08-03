@@ -1,4 +1,10 @@
 <h1>Universities</h1>
+<style>
+	h4{
+		text-align:right;
+		margin-top: -30px;
+		}
+</style>
 
 <!-- Begin Form -->
 <form class="form-horizontal" role="form" style="max-width:450px;">
@@ -42,6 +48,10 @@
 
 
 <!-- Begin list -->
+
+	<h2> College/ University</h2> 
+	<h4> Weighted/ Unweighted</h4>
+
 <div class="list-group">
 	<% _.each(list, function(university) { %>
 	<a class="list-group-item" href="#/universities/<%= university.get('id') %>">
