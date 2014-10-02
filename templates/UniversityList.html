@@ -56,7 +56,7 @@
 	<% _.each(list, function(university) { %>
 	<a class="list-group-item" href="#/universities/<%= university.get('id') %>">
 		<i class="fa fa-institution fa-fw"></i>&nbsp;
-		<%= university.get('university_name') %>
+		<%= university.get('name') %>
 		<span class="pull-right">
 			<%= university.get('average_gpa_unweighted') %>	/
 			<%= university.get('average_gpa_weighted') %>	

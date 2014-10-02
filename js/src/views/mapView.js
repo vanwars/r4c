@@ -58,7 +58,7 @@ var MapView = ListView.extend({
 					config.router.navigate("/universities/" + this.id, true);
 				});
 				google.maps.event.addListener(marker, 'mouseover', function() {
-        			  that.infowindow.setContent(model.get("university_name"));
+        			  that.infowindow.setContent(model.get("name"));
   						  that.infowindow.open(that.map,marker);
     			});
 
