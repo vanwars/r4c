@@ -1,6 +1,6 @@
 var config = {
 	username: 'vanwars',
-	password: 'my_password',
+	password: '123',
 	templateNames: [
 		'UniversityList',
 		'UniversityDetail',
